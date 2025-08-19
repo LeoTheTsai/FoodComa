@@ -1,9 +1,9 @@
 # FoodComa Monorepo
-
 Ingredient-driven recipe generator and manager.
 
 - Web: React + TypeScript + Vite + Tailwind + Apollo Client (PWA)
 - API: Express + Apollo Server (GraphQL) + MongoDB (Mongoose) + OpenAI
+Demo: https://food-coma-web.vercel.app/
 
 ## Monorepo layout
 - `apps/web` — SPA, routes, components, GraphQL client, PWA manifest
