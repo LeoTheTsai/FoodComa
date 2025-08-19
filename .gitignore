@@ -17,7 +17,6 @@ apps/**/.env
 # Generated assets
 apps/api/public/uploads/
 # If you don’t want to version cached source images too, keep this:
-apps/api/public/images/
 
 # Coverage/temp
 coverage/
