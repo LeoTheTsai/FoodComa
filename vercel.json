@@ -1,4 +1,7 @@
 {
+  "installCommand": "corepack enable && corepack prepare pnpm@10.14.0 --activate && pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm -F @foodcoma/web build",
+  "outputDirectory": "apps/web/dist",
   "rewrites": [
     { "source": "/graphql", "destination": "https://foodcoma-88uw.onrender.com/graphql" },
     { "source": "/images/(.*)", "destination": "https://foodcoma-88uw.onrender.com/images/$1" },
