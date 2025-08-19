@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/graphql", "destination": "https://foodcoma-88uw.onrender.com/graphql" },
+    { "source": "/images/(.*)", "destination": "https://foodcoma-88uw.onrender.com/images/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://foodcoma-88uw.onrender.com/uploads/$1" }
+  ],
+  "headers": [
+    { "source": "/(graphql|images|uploads)(.*)", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+  ]
+}
