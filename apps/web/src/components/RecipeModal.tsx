@@ -12,15 +12,30 @@ export default function RecipeModal({ id, onClose }: { id: string; onClose: () =
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  // Lock background scroll while modal is open
+  useEffect(() => {
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevBodyTouch = (document.body.style as any).touchAction as string | undefined;
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    (document.body.style as any).touchAction = "none"; // reduce iOS scroll chaining
+    return () => {
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+      (document.body.style as any).touchAction = prevBodyTouch || "";
+    };
+  }, []);
+
   const r = data?.recipe;
 
   return (
-    <div className="fixed inset-0 z-[200]" aria-modal="true" role="dialog">
+    <div className="fixed inset-0 z-[200] overscroll-contain" aria-modal="true" role="dialog">
       {/* Fullscreen backdrop above any sticky headers */}
       <div className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 z-[210] p-4 md:p-8 flex items-center justify-center">
+    <div className="absolute inset-0 z-[210] p-4 md:p-8 flex items-start md:items-center justify-center overflow-y-auto">
         <div
-          className="relative w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 md:h-[80vh] max-h-[85vh]"
+      className="relative w-full max-w-5xl bg-white rounded-2xl shadow-xl border border-gray-100 md:h-[80vh] max-h-[90vh] overflow-auto"
           onClick={(e) => e.stopPropagation()}
         >
           <button
