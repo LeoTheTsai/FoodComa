@@ -1,0 +1,24 @@
+# Node / pnpm
+node_modules/
+pnpm-debug.log*
+.npmrc
+
+# Build output
+apps/web/dist/
+apps/api/dist/
+
+# Env and local config
+.env
+.env.*
+apps/**/.env
+.vscode/
+.DS_Store
+
+# Generated assets
+apps/api/public/uploads/
+# If you don’t want to version cached source images too, keep this:
+apps/api/public/images/
+
+# Coverage/temp
+coverage/
+tmp/

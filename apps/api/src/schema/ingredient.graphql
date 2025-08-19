@@ -1,0 +1,28 @@
+type Ingredient {
+  id: ID!
+  name: String!
+  unit: String
+  altNames: [String!]
+  category: String
+  description: String
+  imageUrl: String
+  imageLocal: String
+  imageBlurDataUrl: String
+  image: String          # computed (local > remote)
+}
+
+extend type Query {
+  ingredients(
+    search: String
+    category: String
+    hasImage: Boolean
+    limit: Int = 50
+    offset: Int = 0
+  ): [Ingredient!]!
+  # Total count for pagination UI
+  ingredientsCount(search: String, category: String, hasImage: Boolean): Int!
+  # Fetch by exact IDs (keeps chip labels accurate when preselected)
+  ingredientsByIds(ids: [ID!]!): [Ingredient!]!
+  # Ingredients created by current user
+  myIngredients(limit: Int = 50, offset: Int = 0): [Ingredient!]!
+}

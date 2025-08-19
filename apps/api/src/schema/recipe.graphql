@@ -1,0 +1,60 @@
+type Ingredient { id: ID! name: String! unit: String }
+
+type Recipe {
+  id: ID!
+  title: String!
+  description: String
+  ingredients: [Ingredient!]!
+  tags: [String!]!
+  steps: [String!]!
+  imageUrl: String
+  image: String             
+  imageLocal: String 
+  imageBlurDataUrl: String
+  servings: Int
+  prepTimeMin: Int
+  cookTimeMin: Int
+  totalTimeMin: Int
+}
+
+type Query {
+  recipes(search: String, tag: String, limit: Int = 20, offset: Int = 0): [Recipe!]!
+  recipe(id: ID!): Recipe
+  ingredients(search: String, limit: Int = 50): [Ingredient!]!
+  # Total count for pagination UI
+  recipesCount(search: String, tag: String): Int!
+  # Personalized sections
+  myRecipes(limit: Int = 10, offset: Int = 0): [Recipe!]!
+  favoriteRecipes(search: String, limit: Int = 10, offset: Int = 0): [Recipe!]!
+  lastViewedRecipes(limit: Int = 10, offset: Int = 0): [Recipe!]!
+  # Count for favorites pagination
+  favoriteRecipesCount(search: String): Int!
+}
+
+extend type Mutation {
+  toggleFavoriteRecipe(id: ID!): Boolean!
+  recordRecipeView(id: ID!): Boolean!
+}
+
+type Mutation {
+  createRecipe(
+    title: String!
+    description: String
+    ingredients: [ID!]!
+    tags: [String!]
+    ingredientsText: [String!]
+    steps: [String!]
+  ): Recipe!
+  updateRecipe(
+    id: ID!
+    title: String
+    description: String
+    ingredients: [ID!]
+    tags: [String!]
+    ingredientsText: [String!]
+    steps: [String!]
+  ): Recipe!
+  deleteRecipe(id: ID!): Boolean!
+  createIngredient(name: String!, unit: String): Ingredient!
+  deleteIngredient(id: ID!): Boolean!
+}

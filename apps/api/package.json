@@ -1,0 +1,49 @@
+{
+  "name": "@foodcoma/api",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "seed": "tsx src/scripts/seed.ts",
+    "import:mealdb": "tsx src/scripts/importers/theMealDb.ts",
+    "images:recipes": "tsx src/scripts/images/cacheRecipes.ts seeds/recipes.mealdb.json seeds/recipes.mealdb.with-images.json",
+    "seed:mealdb": "tsx src/scripts/seed.mealdb.ts seeds/recipes.mealdb.with-images.json",
+    "import:ingredients": "tsx src/scripts/importers/themealdb.ingredients.ts",
+    "images:ingredients": "tsx src/scripts/images/cacheIngredients.ts seeds/ingredients.mealdb.json seeds/ingredients.mealdb.with-images.json",
+    "seed:ingredients": "tsx src/scripts/seed.ingredients.ts seeds/ingredients.mealdb.with-images.json",
+    "link:recipe-ingredients": "tsx src/scripts/link.recipe-ingredients.ts",
+    "seed:personalization": "tsx src/scripts/seed.personalization.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@graphql-tools/schema": "^10.0.5",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dataloader": "^2.2.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.104.0",
+    "pino": "^9.3.2",
+    "sharp": "^0.34.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.19.11",
+    "eslint": "^9.9.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  }
+}

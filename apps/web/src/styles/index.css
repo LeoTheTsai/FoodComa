@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+/* Thin scrollbar utility */
+.thin-scroll {
+	/* Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: rgba(107, 114, 128, 0.6) transparent; /* gray-500 */
+}
+.thin-scroll::-webkit-scrollbar {
+	width: 8px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+	background-color: rgba(107, 114, 128, 0.5); /* gray-500 */
+	border-radius: 9999px;
+	border: 2px solid transparent;
+	background-clip: content-box;
+}
+.thin-scroll:hover::-webkit-scrollbar-thumb {
+	background-color: rgba(75, 85, 99, 0.6); /* gray-600 */
+}
+
+/* Two-line clamp for recipe titles (matches text-lg default line-height 1.75rem) */
+.title-2l {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
+	min-height: 3.5rem; /* 2 * 1.75rem ensures consistent block height */
+}

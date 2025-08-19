@@ -1,0 +1,14 @@
+{
+  "name": "foodcoma-monorepo",
+  "private": true,
+  "scripts": {
+    "dev:api": "pnpm --filter @foodcoma/api dev",
+    "dev:web": "pnpm --filter @foodcoma/web dev",
+    "build": "pnpm -w -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0"
+  }
+}
